@@ -2,10 +2,14 @@
     class Task
     {
         private $description;
+        private $id;
 
-        function __construct($description)
+        function __construct($description, $id)
         {
             $this->description = $description;
+            if($id !== null) {
+                $this->id = $id;
+            }
         }
 
         function setDescription($new_description)
@@ -16,6 +20,16 @@
         function getDescription()
         {
             return $this->description;
+        }
+
+        function getId()
+        {
+            return $this->id;
+        }
+
+        function setId($new_id)
+        {
+            $this->id = (int) $new_id;
         }
 
         function save()
