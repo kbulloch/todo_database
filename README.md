@@ -1,7 +1,7 @@
-To Do list project
+To Do List
 
-Kyle Bulloch and Bryan Borgeson
+Kyle Bulloch and Jill Kuchman
 
-Using twig to create a task list with ability to add tasks and delete all.
+Using databases to create a task list with ability to add tasks and delete all.
 
-03 04 2015
+03 16 2015
