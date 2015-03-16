@@ -45,7 +45,8 @@
             $tasks = array();
             foreach($returned_tasks as $task) {
                 $description = $task['description'];
-                $new_task = new Task($description, $id = null);
+                $id = $task['id'];
+                $new_task = new Task($description, $id);
                 array_push($tasks, $new_task);
             }
             return $tasks;
