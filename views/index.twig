@@ -14,7 +14,7 @@
                 <label for="name">Category name</label>
                 <input type="text" name="name" id="name" class="form-control">
             </div>
-                <button name="submit" class="btn btn-danger">Add category</button>
+                <button type="submit" class="btn btn-danger">Add category</button>
         </form>
 
         {% if categories is not empty %}
@@ -27,6 +27,11 @@
         {% else %}
             <p>There are no cats here.  Go to the human society.</p>
         {% endif %}
+        <form action="/delete_categories" method="post">
+            <button type="submit" class="btn btn-danger">Clear All Categories</button>
+        </form>
+
+        <p><a href="/show_all_tasks">View all tasks</a></p>
     </div>
 </body>
 </html>

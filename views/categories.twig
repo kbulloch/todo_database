@@ -8,7 +8,7 @@
         <h1>{{ category.getName }}</h1>
 
         {% if tasks is not empty %}
-            <p>Here be ALL YO tasks:</p>
+            <p>Here be thine relevant tasks:</p>
             <ul>
                 {% for task in tasks %}
                     <li>{{ task.getDescription }}</li>
@@ -18,13 +18,13 @@
 
         <h4>Add a task</h4>
 
-        <form action="/tasks" method="post">
+        <form action="/relevant_tasks" method="post">
             <input id="category_id" name="category_id" type="hidden" value="{{ category.getId() }}">
 
             <label for='description'>Task Description</label>
             <input id='description' name='description' type='text'>
 
-            <button type="submit">Add task</button>
+            <button type="submit" class="btn btn-danger">Add task</button>
         </form>
 
         <p><a href="/">Home</a></p>
