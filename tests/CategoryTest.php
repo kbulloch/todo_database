@@ -43,7 +43,7 @@
             //Assert
             $this->assertEquals(1, $result);
         }
-        
+
         function test_setId()
         {
             //Arrange
@@ -57,6 +57,31 @@
             //Assert
             $result = $test_Category->getId();
             $this->assertEquals(2, $result);
+        }
+
+        function test_GetTasks()
+        {
+            //Arrange
+            $name = "Work stuff";
+            $id = null;
+            $test_category = new Category($name, $id);
+            $test_category->save();
+
+            $test_category_id = $test_category->getId();
+
+            $description = "Email the president";
+            $test_task = new Task($description, $id, $test_category_id);
+            $test_task->save();
+
+            $description2 = "Meet the president";
+            $test_task2 = new Task($description2, $id, $test_category_id);
+            $test_task2->save();
+
+            //Act
+            $result = $test_category->getTasks();
+
+            //Assert
+            $this->assertEquals([$test_task, $test_task2], $result);
         }
 
         function test_save()
