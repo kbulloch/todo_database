@@ -103,7 +103,7 @@
         function test_getAll()
         {
             //Arrange
-            $name = "Dog stuff"
+            $name = "Dog stuff";
             $id = null;
             $test_category = new Category($name, $id);
             $test_category->save();
