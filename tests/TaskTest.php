@@ -6,6 +6,7 @@
     */
 
     require_once "src/Task.php";
+    require_once "src/Category.php";
 
     $DB = new PDO('pgsql:host=localhost;dbname=to_do_test');
 
@@ -21,15 +22,21 @@
         function test_getId()
         {
             //Arrange
+            $name = "Dog stuff";
+            $id = null;
+            $test_category = new Category($name, $id);
+            $test_category->save();
+
             $description = "Wash the dog";
-            $id = 1;
-            $test_Task = new Task($description, $id);
+            $category_id = $test_category->getId();
+            $test_task = new Task($description, $id, $category_id);
+            $test_task->save();
 
             //Act
-            $result = $test_Task->getId();
+            $result = $test_task->getId();
 
             //Assert
-            $this->assertEquals(1, $result);
+            $this->assertEquals(true, is_numeric($result));
         }
 
         function test_setId()

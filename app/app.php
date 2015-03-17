@@ -12,9 +12,7 @@
     ));
 
     $app->get("/", function() use ($app) {
-
         return $app['twig']->render('index.twig');
-
     });
 
     $app->get("/tasks", function() use ($app) {
@@ -26,20 +24,14 @@
     });
 
     $app->post("/tasks", function() use ($app) {
-
         $task = new Task($_POST['description'], $id = null);
         $task->save();
-
         return $app['twig']->render('tasks.twig', array('tasks' => Task::getAll()));
-
     });
 
     $app->post("/delete_tasks", function() use ($app) {
-
         Task::deleteAll();
-
         return $app['twig']->render('index.twig');
-
     });
 
     $app->post("/categories", function() use ($app) {
