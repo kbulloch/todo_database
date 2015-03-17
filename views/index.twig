@@ -1,30 +1,32 @@
 <html>
 <head>
-    //bootstrap
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <title>To Do List</title>
 </head>
 <body>
-    <h1>Welcome to the List</h1>
+    <div class="container">
+        <h1>Welcome to the List</h1>
 
-    <p>Create a new category</p>
+        <p>Create a new category</p>
 
-    <form action="/categories" method="post">
-        <label for="name">Category name</label>
-        <input type="text" name="name" id="name">
+        <form action="/categories" method="post">
+            <div class="form-group">
+                <label for="name">Category name</label>
+                <input type="text" name="name" id="name" class="form-control">
+            </div>
+                <button name="submit" class="btn btn-danger">Add category</button>
+        </form>
 
-        <button name="submit">Add category</button>
-    </form>
-
-    {% if categories is not empty %}
-        <p>Here be your cats</p>
-        <ul>
-            {% for cat in categories %}
-                <li><a href="/categories/{{ cat.getId }}">{{ cat.getName }}</a></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>There are no cats here.  Go to the human society.</p>
-    {% endif %}
-    
+        {% if categories is not empty %}
+            <p>Here be your cats</p>
+            <ul>
+                {% for cat in categories %}
+                    <li><a href="/categories/{{ cat.getId }}">{{ cat.getName }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>There are no cats here.  Go to the human society.</p>
+        {% endif %}
+    </div>
 </body>
 </html>
