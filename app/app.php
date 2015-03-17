@@ -14,16 +14,20 @@
 
     //the home page route
     $app->get("/", function() use ($app) {
-        return $app['twig']->render('index.twig');
+        return $app['twig']->render('index.twig', array('categories' => Category::getAll()));
     });
 
-    
     $app->get("/tasks", function() use ($app) {
         return $app['twig']->render('tasks.twig', array('tasks' => Task::getAll()));
     });
 
     $app->get("/categories", function() use ($app) {
         return $app['twig']->render('categories.twig', array('categories' => Category::getAll()));
+    });
+
+    $app->get("/categories/{id}", function($id) use ($app) {
+        $category = Category::find($id);
+        return $app['twig']->render('category.twig', array('category' => $category, 'tasks' => $category->getTasks()));
     });
 
     $app->post("/tasks", function() use ($app) {
@@ -40,7 +44,7 @@
     $app->post("/categories", function() use ($app) {
         $category = new Category($_POST['name']);
         $category->save();
-        return $app['twig']->render('categories.twig', array('categories' => Category::getAll()));
+        return $app['twig']->render('index.twig', array('categories' => Category::getAll()));
     });
 
     $app->post("/delete_categories", function() use ($app) {
