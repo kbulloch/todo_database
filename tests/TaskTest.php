@@ -152,19 +152,25 @@
         function test_find()
         {
             //Arrange
-            $description = "Wash the dog";
+            $name = "Dog stuff";
             $id = null;
-            $description2 = "Water the lawn";
-            $test_Task = new Task($description, $id);
-            $test_Task->save();
-            $test_Task2 = new Task($description2, $id);
-            $test_Task2->save();
+            $test_category = new Category($name, $id);
+            $test_category->save();
+
+            $description = "Wash the dog";
+            $category_id = $test_category->getId();
+            $test_task = new Task($description, $id, $category_id);
+            $test_task->save();
+
+            $description2 = "Water the dog";
+            $test_task2 = new Task($description2, $id, $category_id);
+            $test_task2->save();
 
             //Act
-            $result = Task::find($test_Task->getId());
+            $result = Task::find($test_task->getId());
 
             //Assert
-            $this->assertEquals($test_Task, $result);
+            $this->assertEquals($test_task, $result);
         }
     }
 ?>
