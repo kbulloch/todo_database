@@ -13,17 +13,13 @@
                     <li>{{ task.getDescription }}</li>
                 {% endfor %}
             </ul>
+            <form action='/delete_tasks' method='post'>
+                <button type='submit'>Delete All</button>
+            </form>
+        {% else %}
+            <p>You have no tasks yet! Go play outside!</p>
         {% endif %}
-
-        <!-- <form action='/tasks' method='post'>
-            <label for='description'>Task Description</label>
-            <input id='description' name='description' type='text'>
-
-            <button type='submit'>Add task</button>
-        </form> -->
-        <form action='/delete_tasks' method='post'>
-            <button type='submit'>Delete All</button>
-        </form>
+        <a href="/">Return home</a>
     </div>
 </body>
 </html>
