@@ -103,19 +103,25 @@
         function test_getAll()
         {
             //Arrange
-            $description = "Wash the dog";
-            $description2 = "Water the lawn";
+            $name = "Dog stuff"
             $id = null;
-            $test_Task = new Task($description, $id);
-            $test_Task->save();
-            $test_Task2 = new Task($description2, $id);
-            $test_Task2->save();
+            $test_category = new Category($name, $id);
+            $test_category->save();
+
+            $description = "Wash the dog";
+            $category_id = $test_category->getId();
+            $test_task = new Task($description, $id, $category_id);
+            $test_task->save();
+
+            $description2 = "Water the dog";
+            $test_task2 = new Task($description2, $id, $category_id);
+            $test_task2->save();
 
             //Act
             $result = Task::getAll();
 
             //Assert
-            $this->assertEquals([$test_Task, $test_Task2], $result);
+            $this->assertEquals([$test_task, $test_task2], $result);
         }
 
         function test_deleteAll()
