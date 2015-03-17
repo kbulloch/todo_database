@@ -5,16 +5,19 @@
 
     $app = new Silex\Application();
 
+    //create a new PHP data object with route to our to_do database
     $DB = new PDO('pgsql:host=localhost;dbname=to_do');
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
         'twig.path' => __DIR__.'/../views'
     ));
 
+    //the home page route
     $app->get("/", function() use ($app) {
         return $app['twig']->render('index.twig');
     });
 
+    
     $app->get("/tasks", function() use ($app) {
         return $app['twig']->render('tasks.twig', array('tasks' => Task::getAll()));
     });
