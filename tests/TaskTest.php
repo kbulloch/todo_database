@@ -62,9 +62,15 @@
         function test_setId()
         {
             //Arrange
-            $description = "Wash the dog";
+            $name = "Dog related things";
             $id = null;
-            $test_Task = new Task($description, $id);
+            $test_category = new Category($name, $id);
+            $test_category->save();
+
+            $description = "Wash the dog";
+            $category_id = $test_category->getId();
+            $test_Task = new Task($description, $id, $category_id);
+            $test_Task->save();
 
             //Act
             $test_Task->setId(2);
