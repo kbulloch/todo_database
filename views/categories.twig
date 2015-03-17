@@ -1,28 +1,31 @@
 <html>
 <head>
-    <title></title>
+    //bootstrap
+    <title>To Do List</title>
 </head>
 <body>
-    <h1>Categories</h1>
+    <h1>{{ category.getName }}</h1>
 
-    {% if categories is not empty %}
-        <p>Here be your cats:</p>
+    {% if tasks is not empty %}
+        <p>Here be your tasks:</p>
         <ul>
-            {% for category in categories %}
-                <li>{{ category.getName }}</li>
+            {% for task in tasks %}
+                <li>{{ task.getDescription }}</li>
             {% endfor %}
         </ul>
     {% endif %}
 
-    <form action="/categories" method="post">
-        <label for="name">Category name</label>
-        <input if="name" name="name" type="text">
+    <h4>Add a task</h4>
 
-        <button type="submit">Add category</button>
+    <form action="/tasks" method="post">
+        <input id="category_id" name="category_id" type="hidden" value="{{ category.getId() }}">
+
+        <label for='description'>Task Description</label>
+        <input id='description' name='description' type='text'>
+
+        <button type="submit">Add task</button>
     </form>
-    <form action="/delete_categories" method="post">
-        <button type="submit">Clear</button>
-    </form>
+
     <p><a href="/">Home</a></p>
 </body>
 </html>
