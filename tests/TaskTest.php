@@ -83,9 +83,14 @@
         function test_save()
         {
             //Arrange
-            $description = "Wash the dog";
+            $name = "Dog stuff";
             $id = null;
-            $test_task = new Task($description, $id);
+            $test_category = new Category($name, $id);
+            $test_category->save();
+
+            $description = "Wash the dog";
+            $category_id = $test_category->getId();
+            $test_task = new Task($description, $id, $category_id);
 
             //Act
             $test_task->save();
