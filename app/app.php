@@ -58,6 +58,7 @@
 
     $app->post("/delete_categories", function() use ($app) {
         Category::deleteAll();
+        Task::deleteAll();
         return $app['twig']->render('index.twig', array('categories' => Category::getAll()));
     });
 
