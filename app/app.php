@@ -30,7 +30,7 @@
         return $app['twig']->render('categories.twig', array('category' => $category, 'tasks' => $category->getTasks()));
     });
 
-    $app->post("/tasks", function() use ($app) {
+    $app->post("/categories/{id}", function($id) use ($app) {
         $description = $_POST['description'];
         $category_id = $_POST['category_id'];
         $task = new Task($description, $id = null, $category_id);
