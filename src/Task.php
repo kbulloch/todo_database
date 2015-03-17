@@ -49,7 +49,6 @@
             //??what does query mean exactly...put this string in sql and run
             //?? how is $GLOBALS['DB'] related to "$DB" in app.php, TaskTest.php ??
             $statement = $GLOBALS['DB']->query("INSERT INTO tasks (description, category_id) VALUES ('{$this->getDescription()}', {$this->getCategoryId()}) RETURNING id;");
-
             //puts the info from the table stored in $statement into an associative array called $result
             $result = $statement->fetch(PDO::FETCH_ASSOC);
             //takes the value for the 'id' key in $result and sets that as the id for whatever object save is called on
