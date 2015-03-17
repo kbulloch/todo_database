@@ -1,10 +1,30 @@
 <html>
 <head>
+    //bootstrap
     <title>To Do List</title>
 </head>
 <body>
     <h1>Welcome to the List</h1>
-    <p><a href="/categories">Click Here</a> to see all the categories and to add one.</p>
-    <p><a href="/tasks">Click Here</a> to see all tasks and make one.</p>
+
+    <p>Create a new category</p>
+
+    <form action="/categories" method="post">
+        <label for="name">Category name</label>
+        <input type="text" name="name" id="name">
+
+        <button name="submit">Add category</button>
+    </form>
+
+    {% if categories is not empty %}
+        <p>Here be your cats</p>
+        <ul>
+            {% for cat in categories %}
+                <li><a href="/categories/{{ cat.getId }}">{{ cat.getName }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no cats here.  Go to the human society.</p>
+    {% endif %}
+    
 </body>
 </html>
