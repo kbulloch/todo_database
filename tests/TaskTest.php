@@ -39,6 +39,26 @@
             $this->assertEquals(true, is_numeric($result));
         }
 
+        function test_getCategoryId()
+        {
+            //Arrange
+            $name = "Dog stuff";
+            $id = null;
+            $test_category = new Category($name, $id);
+            $test_category->save();
+
+            $description = "Wash the dog";
+            $category_id = $test_category->getId();
+            $test_task = new Task($description, $id, $category_id);
+            $test_task->save();
+
+            //Act
+            $result = $test_task->getCategoryId();
+
+            //Assert
+            $this->assertEquals(true, is_numeric($result));
+        }
+
         function test_setId()
         {
             //Arrange
