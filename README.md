@@ -5,7 +5,7 @@ Kyle Bulloch and Jill Kuchman
 
 ####Description
 
-This app allows the user to create to do lists.  Built for Epicodus as an exercise in PHP and PostgreSQL databases.
+This app allows the user to create to do lists organized in categories.  Built for Epicodus as an exercise in PHP and PostgreSQL databases.
 
 ####Setup
 
